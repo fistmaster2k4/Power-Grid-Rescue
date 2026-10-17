@@ -6,6 +6,28 @@ Included file:
 
 `org-roccat-powergrid.apk`
 
+# Original APK manifest details
+
+The preserved APK identifies itself as:
+
+- Package: `org.roccat.powergrid`
+- Version name: `0.461`
+- Version code: `28310`
+- Minimum Android version: **Android 2.2 (Froyo) / API 8**
+- Target Android version: **Android 4.2 / API 17**
+
+The manifest requests the expected networking permissions used by the Power-Grid client, including:
+
+- `INTERNET`
+- `ACCESS_NETWORK_STATE`
+- `ACCESS_WIFI_STATE`
+
+It also includes legacy Google Play billing/licensing permissions from the original application era.
+
+Other manifest characteristics include hardware acceleration being enabled and support declarations for small, normal and large screens. The original manifest does not explicitly declare xlarge-screen support.
+
+These values are recorded here as part of the preservation baseline for the untouched original APK.
+
 # What the Android app did
 
 The Android client turned a phone or tablet into the visible and interactive half of the Power-Grid system.
@@ -69,7 +91,11 @@ The rescued/rebuilt Android client is kept separately under:
 
 # Modern Android considerations
 
-This is an old Android application from the original Power-Grid era. Behaviour on modern Android versions can vary because Android's application, permission, networking and package-signing requirements have changed substantially since the app was released.
+The original client dates from the Android 2.x / 4.x era: its manifest permits installation from Android 2.2 onward and targets API 17.
+
+Behaviour on modern Android versions can vary because Android's application, permission, networking and package-signing requirements have changed substantially since the app was released.
+
+The Power-Grid Rescue client has been successfully tested on **Android 11 / API 30**, while the untouched original APK is retained here as the historical baseline.
 
 The rescue project therefore keeps the untouched APK for preservation while providing a rebuilt/patched APK for practical use where required.
 
