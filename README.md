@@ -30,7 +30,8 @@ The project may include:
 - compatibility fixes
   
 The intention is to keep the original software experience recognizable while replacing only the parts that no longer function because of unavailable infrastructure.
-Project philosophy
+
+# Project philosophy
 Power-Grid was useful because it let almost any spare Android device become a flexible control surface without requiring expensive dedicated hardware.
 This project exists because software like that deserves to remain usable even after its original services disappear.
 
