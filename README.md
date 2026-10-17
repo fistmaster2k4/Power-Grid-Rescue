@@ -35,6 +35,7 @@ The intention is to keep the original software experience recognizable while rep
 Power-Grid was useful because it let almost any spare Android device become a flexible control surface without requiring expensive dedicated hardware.
 This project exists because software like that deserves to remain usable even after its original services disappear.
 
+# Legal Notice
 *This repository is a preservation and restoration project 
 for ROCCAT Power-Grid. Original ROCCAT/Turtle Beach software, assets, trademarks, and other third-party components remain the property of their respective rights holders. No ownership of those materials is claimed by this project.  
 Any original restoration notes, documentation, or tooling created specifically for this project remain separately identifiable from third-party material.*
