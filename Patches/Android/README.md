@@ -35,6 +35,12 @@ The rescue work deliberately preserves that relationship instead of replacing Po
 
 Because the rescue APK is rebuilt and cannot use ROCCAT's original private signing key, Android may refuse to install it directly over an existing official Power-Grid installation. If that happens, uninstall the original Power-Grid Android application first, then install the rescue APK.
 
+# Android compatibility
+
+The original ROCCAT Power-Grid client targeted **Android 2.2 (Froyo / API 8) and later**.
+
+The current Power-Grid Rescue APK has been tested successfully on **Android 11**. Older and newer Android versions may also work, but Android 11 is the currently confirmed modern compatibility baseline for the rescue build.
+
 # Original APK
 
 The untouched original Android package is retained separately for preservation:
@@ -42,6 +48,12 @@ The untouched original Android package is retained separately for preservation:
 `Original/Android/org-roccat-powergrid.apk`
 
 The rescue APK is intentionally kept in `Patches/Android/` so the original and modified packages cannot easily be confused.
+
+# Modern Android considerations
+
+This application comes from a much older Android generation, so behaviour can vary on recent devices because Android's application, permission, networking and package-signing requirements have changed substantially since Power-Grid was released.
+
+The successful Android 11 test confirms that the rescue client can still operate on a significantly newer Android release than the original Android 2.2 minimum. Additional Android versions will be documented as they are tested.
 
 # Current scope
 
