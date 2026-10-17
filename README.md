@@ -3,6 +3,16 @@ Power-Grid Rescue is a preservation and restoration project for ROCCAT Power-Gri
 Power-Grid was a genuinely useful piece of software, but much of its original functionality became unusable after the online services it depended on disappeared.
 This project aims to make Power-Grid usable again while preserving the original workflow and behaviour as closely as possible.
 
+## Original interfaces
+
+### Windows application
+
+![ROCCAT Power-Grid Windows UI](winUI.png)
+
+### Android application
+
+![ROCCAT Power-Grid Android UI](androidUI.png)
+
 The goals are simple:
 - restore offline/local operation
 - preserve compatibility with existing Power-Grid grids
