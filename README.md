@@ -28,6 +28,12 @@ The restored system is already capable of communicating between the Windows Powe
 Existing grids can be loaded and transferred to a connected device, and controls pressed on the mobile client are returned to the Windows application where the original macro/action system handles them.
 The project is still being investigated and expanded, including work around the original grid library, user profiles, device compatibility, and long-term preservation.
 
+## Android compatibility
+
+The original ROCCAT Power-Grid Android client was released for **Android 2.2 (Froyo / API 8) and later**.
+
+The current Power-Grid Rescue Android build has been tested successfully on **Android 11**. Older and newer Android versions may also work, but Android 11 is the currently confirmed modern test baseline for this project.
+
 # Preservation approach
 Where possible, original files are kept separate from restored or modified components.
 The project may include:
