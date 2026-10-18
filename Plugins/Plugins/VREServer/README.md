@@ -10,6 +10,8 @@ It connects to a VRE server's **public TCP query port** and exposes server infor
 
 After reconstructing Power-Grid's native plugin interface and demonstrating the repaired Sample2 TCP monitor, we created **VREServer.dll** as our **first entirely new, non-Sample2 native plugin**.
 
+*VRE is a multi-player survival game being written in C# from scratch, using Vulkan as the renderer*
+
 The implementation was developed against the VRE **1.38.40** dedicated-server source and its public query protocol. During testing, the public playtest server was running dedicated build **1.37.55**; the plugin was adapted for the older and newer public-query response versions.
 
 The live test in Power-Grid successfully displayed the advertised name **FistWorld-Playtest**, online state, **0 / 40** players, server build **1.37.55**, status message and numeric query latency. These are historical test readings, **not live values reported by this README**. Wide **2×1** and **3×1** controls were also tested with Power-Grid's existing resizable artwork.
