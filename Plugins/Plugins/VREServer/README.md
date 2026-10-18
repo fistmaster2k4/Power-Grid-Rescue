@@ -14,7 +14,7 @@ After reconstructing Power-Grid's native plugin interface and demonstrating the 
 
 The implementation was developed against the VRE **1.38.40** dedicated-server source and its public query protocol. During testing, the public playtest server was running dedicated build **1.37.55**; the plugin was adapted for the older and newer public-query response versions.
 
-The live test in Power-Grid successfully displayed the advertised name for the server instance, online state, **0 / 40** players, server build **1.37.55**, status message and numeric query latency. These are historical test readings, **not live values reported by this README**. Wide **2×1** and **3×1** controls were also tested with Power-Grid's existing resizable artwork.
+The live test in Power-Grid successfully displayed the advertised name for the server instance, online state, **0 / 40** players, server build **1.37.55**, status message and numeric query latency all in realtime.  Wide **2×1** and **3×1** controls were also tested with Power-Grid's existing resizable artwork.
 
 ## Package and metadata
 
