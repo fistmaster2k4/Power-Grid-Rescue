@@ -14,6 +14,8 @@ Download [PluginDevelopmentKit_0.3.30.7z](PluginDevelopmentKit_0.3.30.7z), extra
 
 The archive includes the PDK, its native build toolchain, the shared SDK interface and two source-only example projects. You do **not** need Visual Studio to use the packaged PDK. The original Power-Grid Windows application is needed to install and run the resulting plugins.
 
+**Runtime requirement:** You may also need the **Microsoft Visual C++ 2010 SP1 Redistributable (x86)** if it is not already installed. Download it from the [official Microsoft Download Center](https://www.microsoft.com/en-gb/download/details.aspx?id=26999) and choose `vcredist_x86.exe` — **even on 64-bit Windows**, because Power-Grid's native plugins are 32-bit.
+
 ## What it does
 
 - **Project workspace:** Create a new plugin project or open an existing Power-Grid plugin directory.
