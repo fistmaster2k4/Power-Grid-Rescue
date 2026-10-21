@@ -12,7 +12,7 @@ The following identifies the **Power-Grid Rescue Patcher release download**, not
 - Version: `0.1.2`
 - File size: **764,928 bytes**
 - SHA-256: `d41867fbf947ce9be7d732f779a763017d32d0b1692efc92ff025499cb7d89ac`
-- Release: [Power-Grid Rescue Patcher v0.1.2](../../releases/tag/0.1.2)
+- Release: [Power-Grid Rescue Patcher v0.1.2](https://github.com/fistmaster2k4/Power-Grid-Rescue/releases/tag/0.1.2)
 
 The hash and size above are from the published GitHub release asset metadata. The hashes below identify the supported original and patched **ROCCAT application executable**, which are unchanged by the v0.1.2 patcher update.
 
