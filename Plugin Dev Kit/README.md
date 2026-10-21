@@ -14,6 +14,8 @@ Download [PluginDevelopmentKit_0.3.30.7z](PluginDevelopmentKit_0.3.30.7z), extra
 
 The archive includes the PDK, its native build toolchain, the shared SDK interface and two source-only example projects. You do **not** need Visual Studio to use the packaged PDK. The original Power-Grid Windows application is needed to install and run the resulting plugins.
 
+**Runtime requirement:** You may also need the **Microsoft Visual C++ 2010 SP1 Redistributable (x86)** if it is not already installed. Download it from the [official Microsoft Download Center](https://www.microsoft.com/en-gb/download/details.aspx?id=26999) and choose `vcredist_x86.exe` — **even on 64-bit Windows**, because Power-Grid's native plugins are 32-bit.
+
 ## What it does
 
 - **Project workspace:** Create a new plugin project or open an existing Power-Grid plugin directory.
@@ -56,7 +58,15 @@ The PDK supplies the SDK include path automatically. The shared header is locate
 
 ## Screenshots
 
-Screenshots of the PDK editor, build output and plugin packaging will be added here.
+Screenshots of the PDK and its development workflow:
+
+| | |
+| --- | --- |
+| <img src="images/Screenshot%202026-10-21%20000025.png" alt="Power-Grid PDK screenshot 000025" width="420"> | <img src="images/Screenshot%202026-10-21%20000102.png" alt="Power-Grid PDK screenshot 000102" width="420"> |
+| <img src="images/Screenshot%202026-10-21%20000114.png" alt="Power-Grid PDK screenshot 000114" width="420"> | <img src="images/Screenshot%202026-10-21%20001340.png" alt="Power-Grid PDK screenshot 001340" width="420"> |
+| <img src="images/Screenshot%202026-10-21%20001417.png" alt="Power-Grid PDK screenshot 001417" width="420"> | <img src="images/Screenshot%202026-10-21%20001430.png" alt="Power-Grid PDK screenshot 001430" width="420"> |
+| <img src="images/Screenshot%202026-10-21%20001444.png" alt="Power-Grid PDK screenshot 001444" width="420"> | <img src="images/Screenshot%202026-10-21%20001448.png" alt="Power-Grid PDK screenshot 001448" width="420"> |
+| <img src="images/Screenshot%202026-10-21%20001524.png" alt="Power-Grid PDK screenshot 001524" width="420"> |  |
 
 ## Compatibility and status
 
