@@ -2,18 +2,30 @@
 
 `PowerGridRescuePatcher.exe` restores ROCCAT Power-Grid build **0461** for offline/local use without requiring the original online service.
 
+## Published patcher executable — v0.1.2
+
+The following identifies the **Power-Grid Rescue Patcher release download**, not the original `ROCCATPowerGrid.exe` being patched:
+
+- File: `PowerGridRescuePatcher.exe`
+- Version: `0.1.2`
+- File size: **764,928 bytes**
+- SHA-256: `d41867fbf947ce9be7d732f779a763017d32d0b1692efc92ff025499cb7d89ac`
+- Release: [Power-Grid Rescue Patcher v0.1.2](../../releases/tag/0.1.2)
+
+The hash and size above are from the published GitHub release asset metadata. The hashes below identify the supported original and patched **ROCCAT application executable**, which are unchanged by the v0.1.2 patcher update.
+
 # Supported build
 
 The current patch targets the Windows executable supplied by the preserved ROCCAT Power-Grid build 0461 installer.
 
-Original executable:
+Original **ROCCAT application** executable:
 
 - File: `ROCCATPowerGrid.exe`
 - SHA-1: `4dff6c77b7b0f20c61dc1d30611b9638dd279b1c`
 - SHA-256: `f519f59ee0c91547716d71ad51a542d7bbd003c45e9be6cf809f30a62f7e9831`
 - Size: `5,149,256 bytes`
 
-Patched executable:
+Patched **ROCCAT application** executable:
 
 - File: `ROCCATPowerGrid.exe`
 - SHA-1: `4f6303e4cb9be0ff63ae613c7d5e9fcaac8478f7`
