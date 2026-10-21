@@ -4,6 +4,18 @@ This document records the byte-level changes used by Power-Grid Rescue so the re
 
 The **executable byte patches** modify only `ROCCATPowerGrid.exe`; their offsets and output hash remain unchanged in v0.1.2. Version **0.1.2 also installs a corrected `Data/IncomingCenter/IncomingCenter.qs`**. No Qt4 or other bundled DLLs are altered.
 
+## Published patcher executable — v0.1.2
+
+The following identifies the **Power-Grid Rescue Patcher release download**, not the original `ROCCATPowerGrid.exe` being patched:
+
+- File: `PowerGridRescuePatcher.exe`
+- Version: `0.1.2`
+- File size: **764,928 bytes**
+- SHA-256: `d41867fbf947ce9be7d732f779a763017d32d0b1692efc92ff025499cb7d89ac`
+- Release: [Power-Grid Rescue Patcher v0.1.2](../../releases/tag/0.1.2)
+
+The hash and size above are from the published GitHub release asset metadata. The hashes below identify the supported original and patched **ROCCAT application executable**, which are unchanged by the v0.1.2 patcher update.
+
 # Supported source executable
 
 `ROCCATPowerGrid.exe` from the preserved build 0461 installer:
