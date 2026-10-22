@@ -141,7 +141,7 @@ In the VREServer sample, a control named `Players` uses the skin named `Players`
   Config: {
     Description: "Player population / maximum slots",
     Options: [
-      { Type: "Text", Name: "HostName", Title: "Server host/IP:", Value: "play.vulkangame.online" },
+      { Type: "Text", Name: "HostName", Title: "Server host/IP:", Value: "vulkangame.online" },
       { Type: "Text", Name: "QueryPort", Title: "Query port:", Value: "5128" },
     ]
   },
