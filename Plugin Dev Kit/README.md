@@ -110,9 +110,11 @@ The reconstructed PDK has also built the [DiscordNotifier](../Plugins/Plugins/Di
 
 These are working reference examples, not a guarantee that every older third-party plugin source will compile without changes.
 
-## Technical documentation
+## Developer tutorial and technical documentation
 
-Interested in the underlying engineering, compiler pipeline and reconstructed native interfaces? See **[TECHNICAL.md](TECHNICAL.md)**.
+New to writing Power-Grid plugins? Start with the **[four-part Plugin Development Guide](PLUGIN_DEVELOPMENT.md)**. It introduces the core JSON files, walks through both bundled examples, and teaches you how to modify and build native C++ plugins.
+
+For the underlying engineering, compiler pipeline and reconstructed native interfaces, see **[TECHNICAL.md](TECHNICAL.md)**.
 
 For the wider restoration project, including the Windows and Android clients, return to [Power-Grid Rescue](../README.md).
 
