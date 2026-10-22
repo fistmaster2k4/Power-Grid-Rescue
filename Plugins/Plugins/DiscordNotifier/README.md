@@ -55,7 +55,7 @@ DiscordNotifier is an unofficial plugin for [Power-Grid Rescue](https://github.c
 ## Install and connect
 
 1. Install and run Power-Grid Rescue, including the Windows host and (optionally) its Android client.
-2. Install the released **DiscordNotifier `.rpgp`** into Power-Grid using the available plugin installer/PDK workflow.
+2. Install the released **DiscordNotifier `.rpgp`** into Power-Grid by double clicking the DiscordNotifier.rpgp.
 3. Ensure the **Discord desktop app** is running on the PC.
 4. Start or restart the Power-Grid host so the plugin loads.
 5. Follow the Discord authorisation prompt if this is your first connection. Authorise only if you trust the plugin.
