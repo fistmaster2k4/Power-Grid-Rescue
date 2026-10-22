@@ -117,7 +117,7 @@ DiscordNotifier uses Discord desktop RPC and an OAuth authorisation flow. The so
 
 This plugin uses the reconstructed **Power-Grid Plugin Development Kit (PDK)**. A release `.rpgp` package contains the compiled `DiscordNotifier.dll`, `plugin.json`, the necessary Discord artwork, and package metadata. It does **not** require modifying the original Incoming Center scripts.
 
-The plugin has been tested with the Windows Power-Grid host and an Android Power-Grid controller. The lightweight RPGP has been reduced to approximately **59 KB** by removing unused artwork.
+The plugin has been tested with the Windows Power-Grid host and an Android Power-Grid controller. The lightweight RPGP weighs in at **59 KB**.
 
 ## Credits
 
