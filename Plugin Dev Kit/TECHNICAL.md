@@ -1,6 +1,6 @@
 # Plugin Development Kit — Technical Notes
 
-This document records the engineering behind the Power-Grid PDK **v0.3.30**. For normal installation and plugin creation, start with the [README](README.md) or the PDK's built-in documentation.
+This document records the engineering behind the Power-Grid PDK **v0.3.31**. For normal installation and plugin creation, start with the [README](README.md) or the PDK's built-in documentation.
 
 ## Background
 
@@ -130,6 +130,30 @@ Qt 4 plugins use `Q_OBJECT`, `Q_INTERFACES(...)` and `Q_EXPORT_PLUGIN2(...)` as 
 
 The PDK supports both ordinary strict JSON and the relaxed manifest syntax found in historical Power-Grid projects (including unquoted keys and trailing commas). Reading or compiling an existing project does not require rewriting its manifest.
 
+### Settings-panel capability and limitations (Power-Grid 0.461)
+
+Recovered native settings code builds the UI from static `DataSources[].Config.Options` descriptors, **not** arbitrary keys returned by `GetPluginData()`. Its supported builder controls include `Label`, `Text`, `Password`, `Check`, `Drop`, `Group`, `TextList` and `Button`. Other native enum names do not demonstrate functional settings controls.
+
+- Dynamic label text and option titles can use `#Method()`, resolved through plugin `GetValue()`. The resolver supplies an **empty** `QVariantList`; inline arguments must not be assumed.
+- Button `Value:"#Method()"` executes a plugin command immediately; optional script `OnMouseClick` can override this route.
+- Available layout directives include `<br>`, `<hr>`, `<stretch...>` and limited `<b>` handling; this is **not** general HTML.
+- Runtime insertion of controls, dynamic checkbox captions, and changing `Drop` choices by returning arbitrary config fields are **not** exposed by the tested plugin interface.
+- Fixed rows with dynamic labels and action buttons can implement paginated user lists. DiscordNotifier demonstrates five fixed rows, sender names, live Notify ON/OFF status, and direct Toggle actions.
+- Settings scripts expose `GetSettingsValue`, `SrcGetValue` and `Revert()`. Revert **rebuilds the form from backend state, without saving**, so unsaved changes elsewhere (such as Diagnostics) can be discarded. Conventional paginated Check widgets need explicit capture/staging and Apply/Cancel validation.
+- Button actions can immediately mutate plugin-owned state and aren't automatically rolled back by Cancel.
+- Native settings use a scroll area, but arbitrary dynamic per-Group scrolling has not been established. `TextList` construction/add has a **128-row limit**; this is unrelated to arbitrary saved config-map key counts.
+- The host saves editable control values into `PGConfiguration` via `SetPluginData`; unknown stored keys are retained. Check states may be **strings** `"0"`, `"1"`, `"2"`, rather than booleans. The observed settings file is `Documents\\ROCCAT\\Power-Grid\\userCfg.json` under `CfgSrc.<name>`. Use stable IDs rather than mutable display names for entity-specific preferences.
+
+Relevant native addresses: option parser `0x00419eb0`, settings builder `0x00480ef0`, dynamic resolver `0x0047c560`, label refresh `0x0047dfd0`, button handler `0x0047e4e0`, collector `0x00480320`, saver `0x00482ab0`.
+
+### Incoming Center rendering and action boundaries
+
+In Power-Grid 0.461, the notification text control (`TextA`) draws with Qt `QPainter::drawText` into a fixed layout, with ordinary wrapping and clipping. It is **not** an HTML/hyperlink renderer, marquee, or pageable text viewer. Native `$()` text substitution exists for registered control mappings/formatters but doesn't establish plugin-provided JavaScript execution or dynamic title/body switching.
+
+The script caches entries and skips rewriting text for existing rendered boxes. Replacing the `text` field for the same timestamp won't reliably refresh the existing banner; omitting a returned entry doesn't automatically delete the visible box. Toggling `IsActive()` can force source-level refresh in some cases, but is disruptive and timing-dependent rather than a supported per-entry update.
+
+The `link` field invokes the original external-content confirmation and executes on the **Windows host**, including when the user taps a notification on the Android controller. `resp` triggers a confirmation and can reach the plugin's `GetValue("SendResponse", ...)`, but neither field provides a verified per-entry display toggle. DiscordNotifier uses `title` and `body` as a combined newline-delimited `text` preview and sets a native `discord://-/channels/...` deep link; tests confirmed message-level highlighting on desktop Discord.
+
 ## RPGP package generation
 
 An `.rpgp` is a ZIP-format Power-Grid plugin package. The exporter assembles the compiled library and runtime files referenced by the project, with entries located at the package root when expected by Power-Grid.
@@ -143,6 +167,8 @@ VREServer.ctrlset.json
 vreserver.dll
 VREServer.qs
 ```
+
+Keep the project/package icon as **`icon.png` at the project root**. Additional runtime artwork belongs under **`rsc/`**; `plugin.json` references it through `Gfxs`, e.g. `{"Name":"DiscordSymbolBlurple","Rsc":"rsc/Discord-Symbol-Blurple.png","Tiling":"Scale"}`. The exporter includes required assets in the RPGP while preserving resource paths. In the tested DiscordNotifier, `Icon` uses the **unqualified** `Gfxs[].Name` value, rather than a data-source-prefixed identifier.
 
 Other plugins may require images or other referenced assets. The exporter should validate those dependencies rather than blindly include every project file.
 
@@ -161,6 +187,10 @@ The following end-to-end behaviours were confirmed with **Power-Grid Windows Lau
 | Manifest compatibility | Both strict-JSON and legacy relaxed-manifest projects were handled through PDK workflows. |
 
 These tests establish a useful compatibility baseline for the two reconstructed interfaces. They do not constitute exhaustive verification of every SDK feature, plugin project or host version.
+
+### Editor external-change limitation
+
+Refreshing the project explorer does **not** reload open file tabs. The editor may show stale in-memory text while the RPGP packager uses newer files on disk. Close and reopen tabs following external file changes; do not save an outdated tab over newer disk data. Automatic change detection is not a confirmed feature of v0.3.31.
 
 ## Reconstruction and maintenance notes
 

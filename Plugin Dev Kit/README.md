@@ -8,9 +8,9 @@ This PDK is part of the [Power-Grid Rescue project](../README.md).
 
 ## Download
 
-**Current version: v0.3.30**
+**Current version: v0.3.31**
 
-Download [PluginDevelopmentKit_0.3.30.7z](PluginDevelopmentKit_0.3.30.7z), extract it to a folder of your choice on Windows and launch `PowerGridPluginDevelopmentKit.exe`.
+The release archive is **`PluginDevelopmentKit_0.3.31.7z`**. Installation and first-build steps are in **Getting started** below.
 
 The archive includes the PDK, its native build toolchain, the shared SDK interface and two source-only example projects. You do **not** need Visual Studio to use the packaged PDK. The original Power-Grid Windows application is needed to install and run the resulting plugins.
 
@@ -29,7 +29,7 @@ The archive includes the PDK, its native build toolchain, the shared SDK interfa
 
 ## Getting started
 
-1. Extract the archive and open the PDK.
+1. Download [`PluginDevelopmentKit_0.3.31.7z`](PluginDevelopmentKit_0.3.31.7z), extract it to a folder of your choice on Windows and launch `PowerGridPluginDevelopmentKit.exe`.
 2. Choose **File → Preferences** to set your preferred project, output and log folders.
 3. Open either included example under `NativeBuild`, or choose **File → New Project**.
 4. Explore or edit the C++ source and plugin manifests.
@@ -38,6 +38,38 @@ The archive includes the PDK, its native build toolchain, the shared SDK interfa
 7. Double-click the exported `.rpgp` on a Windows installation with Power-Grid, then follow the Power-Grid import and plugin-permission prompts.
 
 An unbuilt example may show a warning that its DLL is not present yet. This is expected: the PDK produces that DLL when you build the project.
+
+## Editor keyboard shortcuts
+
+Standard text-editing shortcuts are available in the code editor, including **Ctrl+S** to save the open file.
+
+| Shortcut | Action |
+| --- | --- |
+| **Ctrl+S** | Save current file |
+| **Ctrl+C** | Copy selection |
+| **Ctrl+X** | Cut selection |
+| **Ctrl+V** | Paste clipboard text |
+| **Ctrl+A** | Select all editor text |
+| **Ctrl+Z** | Undo |
+| **Ctrl+Y** | Redo (when supported by the active editor) |
+
+These refer to editor operations, not application-wide Build/Export commands.
+
+## Plugin artwork and resources
+
+Keep **`icon.png` in the plugin project root**. Additional artwork used by plugin controls belongs in **`rsc/`**, with project-relative references in `plugin.json` (for example, `rsc/Discord-Symbol-Blurple.png`). The RPGP exporter includes the required artwork inside the distributable package.
+
+```text
+MyPlugin/
+  icon.png
+  plugin.json
+  Source/
+    MyPlugin.cpp
+  rsc/
+    notification-icon.png
+```
+
+Remove unused graphics before export to avoid unnecessary package size.
 
 ## Included examples
 
@@ -70,7 +102,11 @@ Screenshots of the PDK and its development workflow:
 
 ## Compatibility and status
 
-**v0.3.30 has been tested with Power-Grid Windows Launcher 0.461.** Both included plugin types have been compiled, exported as RPGP packages, imported into Power-Grid and exercised successfully: VRE Server displayed live status, and PDKIncomingProbe appeared in the Incoming Center.
+The reconstructed PDK has also built the [DiscordNotifier](../Plugins/Plugins/DiscordNotifier/README.md) plugin, demonstrating Qt 4 desktop RPC notification handling, persistent plugin settings, Incoming Center links and Android-to-PC navigation. The PDK editor currently does not reload externally changed files merely when its explorer is refreshed; close and reopen the affected editor tab before editing after an external overwrite.
+
+
+
+**v0.3.31 has been tested with Power-Grid Windows Launcher 0.461.** Both included plugin types have been compiled, exported as RPGP packages, imported into Power-Grid and exercised successfully: VRE Server displayed live status, and PDKIncomingProbe appeared in the Incoming Center.
 
 These are working reference examples, not a guarantee that every older third-party plugin source will compile without changes.
 
