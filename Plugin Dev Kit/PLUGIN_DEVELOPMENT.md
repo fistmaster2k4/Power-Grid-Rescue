@@ -615,7 +615,7 @@ function InitPlayers(p_xSkin)
     var cfg = p_xSkin.getControl().getConfigData();
     var host = cfg["HostName"];
     var port = cfg["QueryPort"];
-    if (host == null || String(host).length == 0) host = "play.vulkangame.online";
+    if (host == null || String(host).length == 0) host = "vulkangame.online";
     if (port == null || String(port).length == 0) port = "5128";
     p_xSkin.data = { host: String(host), port: String(port),
                      result: this.FindLayout("Result") };
