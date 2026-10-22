@@ -18,7 +18,7 @@ DiscordNotifier is an unofficial plugin for [Power-Grid Rescue](https://github.c
 
 ### Incoming Center on Android
 
-![Discord messages in the Power-Grid Android Incoming Center](images/mobile_notifier.png)
+<img src="images/mobile_notifier.png" alt="Discord messages in the Power-Grid Android Incoming Center" width="280">
 
 ### Opening a message — confirmation on Windows
 
@@ -26,7 +26,7 @@ DiscordNotifier is an unofficial plugin for [Power-Grid Rescue](https://github.c
 
 ### Opening a message — confirmation on Android
 
-![Power-Grid confirmation dialog on Android](images/mobile_confirmation.png)
+<img src="images/mobile_confirmation.png" alt="Power-Grid confirmation dialog on Android" width="280">
 
 ## Features
 
