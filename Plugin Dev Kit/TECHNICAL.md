@@ -75,6 +75,32 @@ Both supplied samples now use the **single shared header**:
 
 The PDK configures its include paths to find `SDK/include/RoccatPowerGrid.h`. Sample projects should not bundle independent copies of the interface definitions.
 
+### Comparison with the recovered official ROCCAT SDK v1.1
+
+**New primary source:** the unmodified [official SDK archive and manuals](../Original/SDK-v1.1/), particularly `include/RoccatPowerGrid.h` inside the ZIP and its C++ Doxygen reference (`docs/dox_cpp/html/index.html`). The table compares **source declarations**, not inferred export addresses; the SDK header does not give numerical vtable offsets.
+
+| Interface/slot in our reconstructed x86 layout | Reconstructed PDK declaration or name | Original SDK v1.1 declaration | Assessment |
+| --- | --- | --- | --- |
+| `IPluginBase +0x2C` | `QString GetName()` | `virtual QString GetName()=0` | Same published signature. |
+| `IPluginBase +0x30` | `void SetPluginData(QVariantMap)` | `virtual void SetConfig(QVariantMap p_xCfg)` | **Original name recovered**; equivalent visible argument/return types. |
+| `IPluginBase +0x34` | `QVariantMap GetPluginData()` | `virtual QVariantMap GetConfig()` | **Original name recovered**; equivalent visible return type. |
+| `IPluginBase +0x38` | `QVariant GetValue(QString, const QVariantList&)` | `virtual QVariant GetValue(QString p_sName, const QVariantList& p_axParams)` | Same published signature. |
+| `IFuncProvider +0x3C` | `const QStringList& GetList()` | `virtual const QStringList& GetList()=0` | Same published signature. |
+| `IIncomingDataSource +0x3C` | `PGIncomingEntries GetEntries()` | `virtual TEntries GetEntries()=0` | Same underlying `QMap<qint64,QVariantMap>` return type; different alias. |
+| `IIncomingDataSource +0x40` | `bool IsActive()` | `virtual bool IsActive() const=0` | **Signature mismatch:** official declaration is `const`. |
+
+The original declares `IPluginBase` as a `QObject` subclass with a virtual destructor, four methods in the order above and default no-op/invalid-return implementations for `SetConfig`, `GetConfig` and `GetValue`. It registers `IPluginBase`, `IFuncProvider` and `IIncomingDataSource` with `Q_DECLARE_INTERFACE` using the same `org.roccat.powergrid.*` interface identifiers recorded by the reconstruction.
+
+**Consequences and limits:**
+
+- The former assertion that ROCCAT's names for the two configuration methods were unknown is now superseded. Their *source names* are confirmed from the official header. Renaming those PDK methods is not necessary to explain successful virtual dispatch, but any header migration should be tested against the actual host.
+- `IsActive() const` is **not source-override-equivalent** to `IsActive()`. A new class written against the original interface must implement the const-qualified override. Existing non-const PDK classes should not simply be recompiled against the official header without updating the implementation. The existing host test demonstrates observed behaviour of the reconstructed DLL, not formal source/ABI equivalence for every compiler or host version.
+- The offsets above remain **observed/reconstructed offsets for the tested x86 environment**, not values furnished by ROCCAT's header. The original source order corroborates the relative virtual-method sequence; exact offsets still depend on the host's Qt/MSVC ABI.
+- The original header also defines `IWindowMessageProxy`, `PluginTools` (paths, certificates, network cache, window-message hooks) and `PluginLogger` with `PGLOG_*` macros. These are **official API surface not covered by the two reconstructed interface tests**. Some `PluginTools`/`PluginLogger` routines are imported using `RoccatPowerGrid.lib`; existence in the SDK is not proof the current PDK has equivalent linkage or runtime coverage.
+- The original SDK's `LICENSE.txt` and its own `RoccatPowerGrid.h` remain authoritative archival records. The PDK header and build toolchain remain a separate compatibility implementation.
+
+**Recommendation:** retain the working PDK header as the tested baseline until a controlled comparison build can be run with `SetConfig`/`GetConfig` and const-correct `IsActive`, including both the function-provider and Incoming Center sample tests. Treat official documentation as evidence to guide changes, not as proof that any untested header swap is safe.
+
 ### Common interface
 
 `IPluginBase` derives from `QObject`. The reconstructed 32-bit virtual layout is:
@@ -86,7 +112,7 @@ The PDK configures its include paths to find `SDK/include/RoccatPowerGrid.h`. Sa
 | `+0x34` | `GetPluginData()` | Returns configuration/state. |
 | `+0x38` | `GetValue(QString, const QVariantList&)` | Supplies a named value when used by an appropriate plugin type. |
 
-`SetPluginData` and `GetPluginData` are **reconstructed source-level names**; their original ROCCAT SDK names have not been established. Compatibility depends on the correct virtual slot order and ABI signatures, not the spelling of these two methods.
+`SetPluginData` and `GetPluginData` are **reconstructed source-level names**. The recovered official SDK names the corresponding methods **`SetConfig`** and **`GetConfig`**. See the official-SDK comparison above. Virtual dispatch depends on compatible slot order and ABI signatures, not these descriptive source spellings.
 
 ### Function provider
 
@@ -109,7 +135,7 @@ Its Qt interface identifier is `org.roccat.powergrid.IFuncProvider`.
 | `+0x3C` | `PGIncomingEntries GetEntries()` | Returns entries for Power-Grid's Incoming Center. |
 | `+0x40` | `bool IsActive()` | Indicates whether the source is active. |
 
-Its Qt interface identifier is `org.roccat.powergrid.IIncomingDataSource`.
+Its Qt interface identifier is `org.roccat.powergrid.IIncomingDataSource`. **Note:** the recovered original header declares `bool IsActive() const`; the reconstructed PDK declaration and accepted sample use non-const `IsActive()`. See the comparison above before mixing headers.
 
 The reconstructed type aliases are:
 
@@ -194,7 +220,7 @@ Refreshing the project explorer does **not** reload open file tabs. The editor m
 
 ## Reconstruction and maintenance notes
 
-The original function-provider interface and incoming-data-source interface were independently reconstructed from available binaries and source evidence, then merged into one common header after comparison of their shared base-class layout. Some source-level names are descriptive replacements because virtual dispatch did not reveal the original names.
+The original function-provider interface and incoming-data-source interface were independently reconstructed from available binaries and source evidence, then merged into one common header after comparison of their shared base-class layout. The original official SDK has since confirmed the source-level names `SetConfig` and `GetConfig` for two methods previously called `SetPluginData` and `GetPluginData` in the reconstruction. The rebuilt header remains the tested baseline pending a controlled migration.
 
 ABI-critical edits should be reviewed against the accepted samples. A sensible regression sequence is to build each sample through the PDK, export a package, import it through genuine Power-Grid and exercise the relevant host feature.
 

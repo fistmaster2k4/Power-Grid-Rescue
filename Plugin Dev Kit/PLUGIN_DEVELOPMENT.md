@@ -9,6 +9,8 @@
 
 ---
 
+> **Official SDK comparison (historical reference):** ROCCAT's recovered SDK v1.1 calls the configuration methods `SetConfig` and `GetConfig`, and declares incoming-source `IsActive() const`. The PDK's accepted reconstructed sample uses `SetPluginData`, `GetPluginData` and non-const `IsActive()`. Continue using the supplied PDK header for these tutorials; do not mix headers without adapting and testing the source. See [Technical Notes — official SDK comparison](TECHNICAL.md#comparison-with-the-recovered-official-roccat-sdk-v11) and the [original archive](../Original/SDK-v1.1/).
+
 ## Part 1 — Core Project Structure
 
 **Applies to:** Power-Grid Windows host 0.461 and the reconstructed Power-Grid PDK v0.3.31.  
