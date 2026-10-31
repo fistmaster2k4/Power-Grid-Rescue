@@ -218,6 +218,38 @@ These tests establish a useful compatibility baseline for the two reconstructed 
 
 Refreshing the project explorer does **not** reload open file tabs. The editor may show stale in-memory text while the RPGP packager uses newer files on disk. Close and reopen tabs following external file changes; do not save an outdated tab over newer disk data. Automatic change detection is not a confirmed feature of v0.3.31.
 
+## Future PDK development — recovered official SDK capabilities
+
+**Status: planned / research, not implemented or validated by this documentation update.** Recovery of the official SDK v1.1 gives us a primary-source specification for capabilities beyond the two native interfaces already demonstrated. The following is a proposed implementation and regression roadmap, **not a release promise**. Preserve the existing working PDK v0.3.31 baseline.
+
+| Priority | Workstream | Evidence available now | Next verification / deliverable |
+| --- | --- | --- | --- |
+| 1 | Native interface alignment | Official `RoccatPowerGrid.h` establishes `SetConfig`, `GetConfig`, `IIncomingDataSource::IsActive() const`, and the extra types. | Diff against the PDK header; build isolated compatibility probes with original signatures; confirm x86 layout and test both host workflows. |
+| 2 | Graphics tiling | The January 2013 official guide specifies `Gfxs[].Tiling` modes `None`, `1x1`, `3x1`, `1x3`, `3x3`, `Scale`, and `Tiles` entries as `Left,Top,Width,Height,RepeatXY`. | Add schema-aware editing, validation and preview fixtures; export each mode and compare against genuine Power-Grid 0.461 rendering. |
+| 3 | Graphics layering | The guide documents `Gfxs[].Layers` with child `Gfx` references, positioning, alignment and dimensions. It explicitly says that, when both features are used, **tiling applies after composition of the layers**. | Build layered artwork examples, test draw order, scaling, alignment, nesting/cycles and combined layering-plus-tiling behaviour on the host. |
+| 4 | Script/layout API exploration | Original JavaScript Doxygen covers `CtrlView`, `DCControl`, `DCGrid`, `DCLayout`, `DCObj`, `DCPal`, `DCSkin`, and `DCConfigOption`. | Inventory callable methods/properties and construct small QS demonstrations; distinguish Doxygen declarations from tested host behaviour. |
+| 5 | Native host utilities | Original header declares `IWindowMessageProxy`, `PluginTools`, `PluginLogger` and `PGLOG_*` macros. | Check `RoccatPowerGrid.lib` imports and host 0.461 exports before implementing optional wrappers; verify Windows message hook lifetime and logging. |
+| 6 | PDK authoring experience | Existing PDK already edits manifests and packages assets but does not yet claim a graphical layers/tiling designer. | Introduce editor affordances only after validating schema and renderer behaviour; ensure manual manifest editing remains possible. |
+
+### Proposed graphics proof cases
+
+1. **Sizing baseline:** one simple image control in `None` and `Scale` modes; verify resizing and source-image fidelity.
+2. **Tile families:** repeatable fixtures for `1x1`, `3x1`, `1x3` and `3x3`, including mixed `r` (repeat) / `s` (scale) axis flags as documented.
+3. **Compositing:** a background layer plus a foreground indicator, with explicit `Left`/`Top` and an `Align` variant.
+4. **Combined rendering:** composed layered Gfx followed by tiling, matching the guide's stated order.
+5. **Packaging:** export RPGP and verify that all declared `Rsc` image paths, nested references and required resources survive intact.
+6. **Host comparison:** capture the resulting control at different grid sizes on actual Power-Grid 0.461. A PDK preview is only a faithful preview once its results match these host captures.
+
+### Guardrails for implementation
+
+- **Do not automatically replace** the reconstructed header. Keep the existing sample builds as regression fixtures; original source names alone do not establish binary compatibility.
+- For native utilities, differentiate a **declared** interface, an **export found in the actual host/import library**, and a **successfully invoked** function. Record each evidence level explicitly.
+- Do not treat every documented JS method, tiling combination or UI feature as working on host 0.461 until exercised; capture unsupported or inconsistent behaviours.
+- No need to ship the SDK's legacy compiled DLLs inside the PDK. Keep archival originals under [Original/SDK-v1.1](../Original/SDK-v1.1/).
+- Suggested release criterion for each feature: fixture source + resulting RPGP + screenshot/log of host behaviour + update to this document and the user-facing development guide.
+
+**Primary sources:** [official 2013 Plugin Building Guide](../Original/SDK-v1.1/Power-Grid%20Plugin%20Building%20Guide.pdf), especially pp. 11–12 for `Gfxs`, `Layers` and `Tiles`; [original SDK archive](../Original/SDK-v1.1/Power-Grid_SDK_v1.1.zip) for the C++ header and both Doxygen trees.
+
 ## Reconstruction and maintenance notes
 
 The original function-provider interface and incoming-data-source interface were independently reconstructed from available binaries and source evidence, then merged into one common header after comparison of their shared base-class layout. The original official SDK has since confirmed the source-level names `SetConfig` and `GetConfig` for two methods previously called `SetPluginData` and `GetPluginData` in the reconstruction. The rebuilt header remains the tested baseline pending a controlled migration.
