@@ -7,6 +7,16 @@ This folder contains grids for **ROCCAT Power-Grid**, including examples rescued
 - **[Rescued](Rescued/)** — recovered grids preserved for use with Power-Grid Rescue.
 - **[New](New/)** — newly created grids for the restored Power-Grid application.
 
+### Rescued game and application collections
+
+- **[Elite Dangerous](Rescued/Elite%20Dangerous/)** — BloodSteyn and BlueSkunk layouts.
+- **[Farming Simulator 2013](Rescued/Farm%20Sim%202013/)** — LS13 Handy App.
+- **[Farming Simulator 2017](Rescued/Farm%20Sim%202017/)** — harvester, tractor and general FS17 layouts.
+- **[IL-2 Sturmovik: Battle of Stalingrad / BoX](Rescued/IL-2%20Sturmovik%20BoX/)** — ten aircraft and general-control layouts.
+- **[Prepar3D](Rescued/Prepar3D/)** — v2.5 essentials.
+- **[Rise of Flight](Rescued/Rise%20of%20Flight/)** — fighter and engine controls.
+- **[Adobe Photoshop](Rescued/Adobe%20Photoshop/)** — Photoshop shortcut layout.
+
 ## New to Power-Grid? Start here
 
 Before you dive into the files, have a look at **[ROCCAT Power-Grid: Smart Grid Gaming Software — Tom's Hardware (2013)](https://www.tomshardware.com/reviews/smart-grid-gaming-software,3622.html)**.
@@ -22,6 +32,8 @@ It's a useful introduction for first-time users, and an excellent snapshot of th
 Install and launch the restored Power-Grid Windows application, then import the grid package through Power-Grid. Connect your Android Power-Grid controller to the Windows host to use the grid on your device.
 
 Some historical grids rely on other applications, plugins or resources. Those dependencies may still be needed, even with the restored Power-Grid client.
+
+These are **preserved community-created archives**, not newly authored or individually verified game integrations. Original package filenames and embedded author metadata are retained. Check each folder's README for provenance and binding notes.
 
 For the patched Windows and Android clients, see **[Power-Grid Rescue](../README.md)** and the repository's [Releases](https://github.com/fistmaster2k4/Power-Grid-Rescue/releases).
 

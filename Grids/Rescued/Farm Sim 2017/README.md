@@ -26,6 +26,16 @@ Creator: **EndlessDark**
 
 A Farming Simulator 2017 grid intended for **tractor controls and GPS-related functions**.
 
+### FS17 powergrid profile
+
+File:
+
+`fs17 profile.rpgp`
+
+Creator: **theguy** (embedded package metadata)
+
+A separate community Power-Grid profile named `FS17 powergrid profile`. Two recovered copies were byte-for-byte identical; only one is preserved here.
+
 ## Original compatibility note
 
 The recovered EndlessDark grids include a note regarding the hazard/beacon control. Power-Grid did not correctly recognise the `Pos1` / Home key in that configuration, so the grid expected a secondary in-game binding of:
@@ -42,6 +52,6 @@ Because these grids were authored for a specific game version and control setup,
 
 ## Preservation note
 
-These grids are preserved as recovered community material and remain attributed to **EndlessDark**.
+These grids are preserved as recovered community material and remain attributed to their respective creators, **EndlessDark** and **theguy**.
 
 Power-Grid Rescue does not claim authorship of these layouts, artwork or game-specific material. The purpose of this folder is preservation and continued compatibility with the original Power-Grid grid format.
