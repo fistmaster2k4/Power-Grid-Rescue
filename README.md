@@ -57,6 +57,10 @@ The Incoming Center fix addresses **grid-switching state loss**. Notification so
 
 Download the available build and source from [GitHub Releases](../../releases).
 
+## Original SDK and developer reference
+
+The official [ROCCAT Power-Grid SDK v1.1 archive and documentation](Original/SDK-v1.1/) are preserved under `Original`, including the original PDF guides, bundled C++ and JavaScript Doxygen API manuals, and a technical index.
+
 # Preservation approach
 Where possible, original files are kept separate from restored or modified components.
 The project may include:
