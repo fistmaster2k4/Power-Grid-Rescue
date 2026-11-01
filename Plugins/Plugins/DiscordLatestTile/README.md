@@ -11,7 +11,7 @@ Live, custom-sized Discord notification buttons for the restored ROCCAT Power-Gr
 - Updates the sender and message quietly in place; no page refresh or flashing.
 - Cyan sender name, white message, native multiline word wrapping.
 - Five control sizes, listed as **rows × columns**: 1×3, 1×4, 2×2, 2×3 and 2×4.
-- Tap a tile to open the corresponding Discord message using Power-Grid's original external-action mechanism (`DFP:DoExecute`). Power-Grid may show its external-content confirmation first.
+- Tap a tile to open the corresponding Discord message using Power-Grid's original external-action mechanism (`DFP:DoExecute`). 
 - Uses the original Power-Grid rendering and data-source interfaces; no extra background service or image decoder.
 
 ## Requirements
