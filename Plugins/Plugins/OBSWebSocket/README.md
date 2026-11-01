@@ -12,7 +12,7 @@ This unofficial [Power-Grid Rescue](https://github.com/fistmaster2k4/Power-Grid-
 
 ![Power-Grid OBS WebSocket v0.1.15 editor showing the working purple rotary, named audio buttons and connected status](images/purple_rotary_v0.1.15.png)
 
-The purple ring uses the **original Power-Grid radial-mask artwork and behaviour**, with a recoloured light effect. It follows the currently selected OBS source's volume; it is not a separate row of individually switched LEDs. The original blue Windows volume control remains untouched.
+The purple ring uses the **original Power-Grid radial-mask artwork and behaviour**, with a recoloured light effect. It follows the currently selected OBS source's volume. The original blue Windows volume control remains untouched.
 
 ## Features
 
