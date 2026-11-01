@@ -6,7 +6,7 @@ This unofficial [Power-Grid Rescue](https://github.com/fistmaster2k4/Power-Grid-
 
 **Current tested build: v0.1.15** The rotary, source selection and mute controls work in both directions. Changing a mixer slider directly in OBS updates Power-Grid automatically, with a small refresh delay.
 
-**[Download the ready-to-install OBSWebSocket_v0.1.15.rpgp](OBSWebSocket_v0.1.15.rpgp)** · [Download the v0.1.15 source package](OBSWebSocket_v0.1.15_SOURCE.zip)
+**[Download the ready-to-install OBSWebSocket_v0.1.15.rpgp](OBSWebSocket_v0.1.15.rpgp)**
 
 ## The purple rotary mixer
 
@@ -80,10 +80,6 @@ These are the normal Power-Grid plugin import and DLL approval screens; the capt
 
 **Credential note:** The password field is masked on screen, but Power-Grid's settings persistence is not known to encrypt plugin passwords. Use an appropriate unique OBS password and avoid distributing your local Power-Grid configuration files.
 
-## Source and implementation
-
-The **[source archive](OBSWebSocket_v0.1.15_SOURCE.zip)** contains the C++ Qt 4 plugin source, `.qs` control scripts, manifests and recoloured mixer graphics. It does **not** contain a compiled DLL; use the [Power-Grid Plugin Development Kit](../../Development%20Tools/) to build for **Windows x86 / Qt 4.8.x**, or install the ready-made `.rpgp` above.
-
-The OBS WebSocket functions are exposed through Power-Grid's incoming-data-source bridge, and the rotary's radial mask is fed with the selected source's current OBS volume through the original Power-Grid function-result mechanism. The `250 ms` refresh also restores the mask result if the host clears it. This is the mechanism tested in **v0.1.15**.
+## Attribution
 
 The original ROCCAT volume-control graphics were used as preservation references and recoloured for this plugin. ROCCAT/Power-Grid and OBS Studio remain the property of their respective owners. This is an unofficial community restoration project, not an official OBS or ROCCAT release.
