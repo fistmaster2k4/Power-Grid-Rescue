@@ -52,13 +52,13 @@ The source names displayed in the selector can reflect Windows device-friendly n
 
 ### Power-Grid's OBS WebSocket settings
 
-![Power-Grid Launcher OBS WebSocket connection settings, from an early development build](images/powergrid_obs_settings_early.png)
+![OBS WebSocket v0.1.15 settings showing DESKTOP, MIC and ALERTS source-button names](images/powergrid_obs_settings_v0.1.15.png)
 
 ### Audio input selection
 
 ![OBS audio-source dropdown during development](images/audio_source_dropdown_early.png)
 
-**Screenshot note:** The settings and source-dropdown images above were captured during early development (some show v0.1.10), before the three source selectors and renamable buttons were finalised. The downloadable package is **v0.1.15**.
+**Screenshot note:** The source-dropdown detail above and installation prompts below are earlier development captures. The full settings panel and purple rotary screenshots show the updated v0.1.15 interface.
 
 ## Power-Grid installation prompts
 
