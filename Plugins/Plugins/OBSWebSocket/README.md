@@ -80,6 +80,8 @@ These are the normal Power-Grid plugin import and DLL approval screens; the capt
 
 **Credential note:** The password field is masked on screen, but Power-Grid's settings persistence is not known to encrypt plugin passwords. Use an appropriate unique OBS password and avoid distributing your local Power-Grid configuration files.
 
+Built with PDK v0.3.31
+
 ## Attribution
 
 The original ROCCAT volume-control graphics were used as preservation references and recoloured for this plugin. ROCCAT/Power-Grid and OBS Studio remain the property of their respective owners. This is an unofficial community restoration project, not an official OBS or ROCCAT release.
