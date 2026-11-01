@@ -2,9 +2,9 @@
 
 **Control OBS Studio's audio mixer from the restored ROCCAT Power-Grid launcher and an Android Power-Grid controller.**
 
-This unofficial [Power-Grid Rescue](https://github.com/fistmaster2k4/Power-Grid-Rescue) plugin connects to OBS Studio's built-in **WebSocket 5.x server** and brings back the original 4×3 rotary volume-control experience, complete with a purple, partially filled radial mask. The plugin runs locally on the Windows host; the Power-Grid Android client acts as its remote control.
+This unofficial [Power-Grid Rescue](https://github.com/fistmaster2k4/Power-Grid-Rescue) plugin connects to OBS Studio's built-in **WebSocket 5.x server** and brings back the original 4×3 rotary volume-control experience, complete with a purple radial mask. The plugin runs locally on the Windows host; the Power-Grid Android client acts as its remote control.
 
-**Current tested build: v0.1.15 (1 November 2026).** The rotary, source selection and mute controls work in both directions. Changing a mixer slider directly in OBS updates Power-Grid automatically, with a small refresh delay.
+**Current tested build: v0.1.15** The rotary, source selection and mute controls work in both directions. Changing a mixer slider directly in OBS updates Power-Grid automatically, with a small refresh delay.
 
 **[Download the ready-to-install OBSWebSocket_v0.1.15.rpgp](OBSWebSocket_v0.1.15.rpgp)** · [Download the v0.1.15 source package](OBSWebSocket_v0.1.15_SOURCE.zip)
 
@@ -31,11 +31,11 @@ This controls **OBS mixer levels**, which are independent of the corresponding W
 - Working **ROCCAT Power-Grid 0.461**, restored with [Power-Grid Rescue](https://github.com/fistmaster2k4/Power-Grid-Rescue).
 - **OBS Studio with its built-in WebSocket 5.x server** (normally listening on port `4455`).
 - The included `.rpgp` package, installed on the Windows Power-Grid host.
-- Optional: a connected Power-Grid Android client for physical touch control. The OBS plugin does **not** install inside Android.
+- The OBS plugin does **not** install inside Android.
 
 ## Installation and setup
 
-1. In OBS Studio, open **Tools → WebSocket Server Settings**, enable the server and authentication, and note the port and generated password.
+1. In OBS Studio, open **Tools → WebSocket Server Settings**, enable the server and authentication, and note the port and generated password, or create your own password.
 2. Double-click **[OBSWebSocket_v0.1.15.rpgp](OBSWebSocket_v0.1.15.rpgp)**. Approve the Power-Grid plugin import and restart the Power-Grid Launcher when prompted.
 3. On first use, approve the normal Power-Grid security prompt allowing `OBSWebSocket.dll` to load.
 4. In **Power-Grid Launcher → Settings → OBS WebSocket Settings**, enter the port and password. Click **Apply**, then **Connect**.
