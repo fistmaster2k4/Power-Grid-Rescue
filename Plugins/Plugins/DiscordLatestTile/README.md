@@ -37,7 +37,6 @@ The button remains in a waiting state until DiscordNotifier has supplied a notif
 - All five controls show the newest available notification, rather than providing independent sender/channel filters.
 - The URL action is restricted to Discord message deep links.
 - Standard text rendering is intentional for compatibility with older Android tablets. Inline custom emoji images and attachment thumbnails are future possibilities, **not features of this release**.
-- The v0.2.7 behaviour was confirmed working on Android; v0.3.0 removes debug output and test branding without changing the working rendering or click mechanism.
 
 ## Technical details
 
