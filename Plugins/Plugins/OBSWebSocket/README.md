@@ -1,87 +1,84 @@
-# OBS WebSocket v0.1.15 for ROCCAT Power-Grid
+# OBS WebSocket v0.1.16 for ROCCAT Power-Grid
 
-**Control OBS Studio's audio mixer from the restored ROCCAT Power-Grid launcher and an Android Power-Grid controller.**
+Control OBS Studio from the restored ROCCAT Power-Grid Launcher and its Android tablet controller. The plugin connects to OBS Studio's built-in **WebSocket 5.x server** on the Windows host.
 
-This unofficial [Power-Grid Rescue](https://github.com/fistmaster2k4/Power-Grid-Rescue) plugin connects to OBS Studio's built-in **WebSocket 5.x server** and brings back the original 4×3 rotary volume-control experience, complete with a purple radial mask. The plugin runs locally on the Windows host; the Power-Grid Android client acts as its remote control.
+**[Download OBSWebSocket_v0.1.16.rpgp](OBSWebSocket_v0.1.16.rpgp)**
 
-**Current tested build: v0.1.15** The rotary, source selection and mute controls work in both directions. Changing a mixer slider directly in OBS updates Power-Grid automatically, with a small refresh delay.
+## Custom OBS buttons
 
-**[Download the ready-to-install OBSWebSocket_v0.1.15.rpgp](OBSWebSocket_v0.1.15.rpgp)**
+![OBS WebSocket action picker, with Audio, Scenes, Sources, Streaming, Recording and other categories](images/obs_action_picker_v0.1.16.png)
 
-## The purple rotary mixer
+Two configurable controls appear under **[Plugin] OBS WebSocket → Controls**:
 
-![Power-Grid OBS WebSocket v0.1.15 editor showing the working purple rotary, named audio buttons and connected status](images/purple_rotary_v0.1.15.png)
+- **OBS Custom Button: Easy** — choose an OBS action and customise its text, icon/image, background, size and button sound.
+- **OBS Custom Button: Master** — adds advanced button settings including touch triggers, active graphics, labels, gloss, positioning and styling.
 
-The purple ring uses the **original Power-Grid radial-mask artwork and behaviour**, with a recoloured light effect. It follows the currently selected OBS source's volume. The original blue Windows volume control remains untouched.
+Both use an **OBS WebSocket actions...** picker. Choose an action category, select the action and choose an OBS target where required. Scenes, sources and other available targets are populated from the connected OBS instance. Previously discovered targets remain available while OBS is offline, and names can also be entered manually.
 
-## Features
+![OBS Custom Button: Easy in the Power-Grid editor](images/obs_custom_button_editor_v0.1.16.png)
 
-- **Three configurable audio-source buttons:** Select an OBS audio input for each button, then rename it to anything useful (for example **MIC**, **DESKTOP** and **ALERTS**).
-- **Bidirectional volume control:** Turn the rotary to adjust the selected source inside OBS, or adjust that source in OBS and watch the rotary follow.
-- **Mute/unmute:** Press the rotary's centre button to toggle the selected source's OBS mute state.
-- **Persistent purple volume indication:** Smooth partial-fill radial mask from the original ROCCAT control, recoloured purple and kept in sync with the OBS value.
-- **Connection status tile:** Optional 1×2 tile showing connection state and detected audio-input count.
-- **Built-in OBS WebSocket 5.x support:** Password authentication, input discovery, disconnect/reconnect and optional automatic connection after a successful manual connection.
-- **Localhost only:** The plugin's WebSocket client connects to OBS on the same Windows machine, not to a remote OBS instance.
+### Available button actions
 
-This controls **OBS mixer levels**, which are independent of the corresponding Windows master/microphone volume settings. The plugin does not modify Power-Grid's stock Windows mixer.
+| Category | Actions |
+| --- | --- |
+| **Audio** | Toggle Mute, Mute, Unmute, Increase Volume, Decrease Volume, Set Volume — using any of the three configured audio slots |
+| **Scenes** | Next Scene, Previous Scene, Switch Program Scene, Set Preview Scene, Trigger Studio Transition, Enable/Disable Studio Mode |
+| **Sources** | Show, Hide or Toggle Scene Item Visibility |
+| **Filters** | Enable, Disable or Toggle a Source Filter |
+| **Streaming** | Start, Stop or Toggle Streaming |
+| **Recording** | Start, Stop, Toggle, Pause, Resume or Toggle Recording Pause |
+| **Replay Buffer** | Start, Stop, Toggle or Save Replay |
+| **Media** | Play, Pause, Restart, Stop, Next or Previous Media Item |
+| **Virtual Camera** | Start, Stop or Toggle Virtual Camera |
+| **Transitions** | Select an OBS Transition |
+| **Hotkeys** | Trigger a named OBS Hotkey |
+
+There are **43 selectable actions**. The action is assigned to the button; its title, icon and appearance can be customised independently. OBS carries out its configured scene transitions when a button changes the active scene.
+
+## Purple rotary volume mixer
+
+![OBS 4x3 purple volume mixer with three named audio buttons](images/purple_rotary_v0.1.15.png)
+
+The **OBS Volume Mixer (4x3)** provides three independent, nameable audio-source buttons. Select a source, turn the purple rotary to adjust its OBS volume, or press the centre **MUTE** button. Changes made in OBS also update the Power-Grid control. The original ROCCAT Windows volume controls are unchanged.
+
+The plugin also includes **OBS Connection Status (1x2)**, showing the current WebSocket connection state and detected audio-input count.
 
 ## Requirements
 
-- Working **ROCCAT Power-Grid 0.461**, restored with [Power-Grid Rescue](https://github.com/fistmaster2k4/Power-Grid-Rescue).
-- **OBS Studio with its built-in WebSocket 5.x server** (normally listening on port `4455`).
-- The included `.rpgp` package, installed on the Windows Power-Grid host.
-- The OBS plugin does **not** install inside Android.
+- ROCCAT Power-Grid Launcher **0.461**, restored with [Power-Grid Rescue](https://github.com/fistmaster2k4/Power-Grid-Rescue).
+- OBS Studio with its built-in **WebSocket 5.x server**, normally on port **4455**.
+- Windows Power-Grid host connected to its Android Power-Grid controller.
+
+The `.rpgp` installs on the Windows host, **not** on Android. The plugin connects to OBS on `127.0.0.1` only.
 
 ## Installation and setup
 
-1. In OBS Studio, open **Tools → WebSocket Server Settings**, enable the server and authentication, and note the port and generated password, or create your own password.
-2. Double-click **[OBSWebSocket_v0.1.15.rpgp](OBSWebSocket_v0.1.15.rpgp)**. Approve the Power-Grid plugin import and restart the Power-Grid Launcher when prompted.
-3. On first use, approve the normal Power-Grid security prompt allowing `OBSWebSocket.dll` to load.
-4. In **Power-Grid Launcher → Settings → OBS WebSocket Settings**, enter the port and password. Click **Apply**, then **Connect**.
-5. Once connected, optionally enable **Automatically connect on startup** and click **Apply** again.
-6. In **Audio Source Buttons**, choose three discovered audio sources from the dropdowns and enter your preferred button names. Apply the changes.
-7. In the **Editor**, select **[Plugin] OBS WebSocket → Audio → OBS Volume Mixer (4x3)** and add it to a grid. The separate **Connection → OBS Connection Status (1x2)** control is also available.
-8. Tap a source button, rotate the dial or press **MUTE**. Change the same source's volume in OBS to verify that the purple ring follows automatically.
-
-The source names displayed in the selector can reflect Windows device-friendly names exposed by OBS. A source may have a different display name in OBS itself.
+1. In OBS Studio, open **Tools → WebSocket Server Settings**. Enable the server and authentication, then note the port and password.
+2. Double-click **[OBSWebSocket_v0.1.16.rpgp](OBSWebSocket_v0.1.16.rpgp)**. Import the plugin and restart the Power-Grid Launcher when prompted.
+3. Approve the normal Power-Grid prompt allowing `OBSWebSocket.dll` to load.
+4. Open **Settings → OBS WebSocket Settings** in the launcher. Enter the port and password, click **Apply**, then **Connect**.
+5. Optionally enable **Automatically connect on startup** after a successful manual connection, then click **Apply**.
+6. Under **Audio Source Buttons**, assign up to three OBS inputs and give their buttons your preferred names. Click **Apply**.
+7. In the **Editor**, select **[Plugin] OBS WebSocket**. Add a volume mixer, connection tile or Easy/Master custom button to your grid.
+8. For a custom button, click **OBS WebSocket actions...**, choose the action and target, then customise the button and add it to a grid.
 
 ### OBS WebSocket server settings
 
-![OBS Studio WebSocket Server Settings with server and authentication enabled](images/obs_server_settings.png)
+![OBS Studio WebSocket Server Settings](images/obs_server_settings.png)
 
-### Power-Grid's OBS WebSocket settings
+### Power-Grid OBS connection and audio-source settings
 
-![OBS WebSocket v0.1.15 settings showing DESKTOP, MIC and ALERTS source-button names](images/powergrid_obs_settings_v0.1.15.png)
+![OBS WebSocket settings showing the configured audio button names](images/powergrid_obs_settings_v0.1.15.png)
 
-### Audio input selection
+## Notes
 
-![OBS audio-source dropdown during development](images/audio_source_dropdown_early.png)
-
-**Screenshot note:** The source-dropdown detail above and installation prompts below are earlier development captures. The full settings panel and purple rotary screenshots show the updated v0.1.15 interface.
-
-## Power-Grid installation prompts
-
-These are the normal Power-Grid plugin import and DLL approval screens; the captures also come from an earlier development build.
-
-<img src="images/plugin_found_early.png" alt="Power-Grid Plugin Found dialog" width="300">
-<img src="images/plugin_imported_early.png" alt="Power-Grid Plugin Imported dialog" width="300">
-<img src="images/plugin_security_warning_early.png" alt="Power-Grid DLL Security Warning dialog" width="300">
-
-## Troubleshooting
-
-| Symptom | Check |
-| --- | --- |
-| `Plugin DLL missing` on the grid | Ensure `OBSWebSocket.dll` was imported, Power-Grid was restarted, and the DLL was approved at the security prompt. The v0.1.15 package contains the DLL. |
-| Not connected | Enable the WebSocket server in OBS, confirm port `4455` (or your custom port), enter the authentication password, click **Apply** and **Connect**. |
-| Source buttons show an unexpected input | Reassign the three **Audio Source Buttons** in the plugin settings, then **Apply**. |
-| Volume changes appear slightly delayed | The control refreshes the OBS volume roughly every **250 ms**, with some additional host/device rendering latency. |
-| Purple mask does not persist | Verify that you are using **v0.1.15**, which restores the host's mask feed after it is reset. |
-
-**Credential note:** The password field is masked on screen, but Power-Grid's settings persistence is not known to encrypt plugin passwords. Use an appropriate unique OBS password and avoid distributing your local Power-Grid configuration files.
+- Audio-source selection can show Windows device-friendly names supplied by OBS. The same input may have a different name in OBS's mixer.
+- Some actions require a corresponding OBS feature to be enabled or configured, such as Replay Buffer or Studio Mode.
+- The WebSocket password field is masked in the launcher, but saved Power-Grid plugin settings should be treated as potentially readable. Use an appropriate OBS password.
+- If a control reports **Plugin DLL missing**, ensure the imported DLL was approved and restart the launcher.
 
 Built with PDK v0.3.31
 
 ## Attribution
 
-The original ROCCAT volume-control graphics were used as preservation references and recoloured for this plugin. ROCCAT/Power-Grid and OBS Studio remain the property of their respective owners. This is an unofficial community restoration project, not an official OBS or ROCCAT release.
+Original ROCCAT volume-control artwork was used as a preservation reference and recoloured for the purple mixer. ROCCAT/Power-Grid and OBS Studio belong to their respective owners. This is an unofficial community restoration project, not an official OBS or ROCCAT release.
