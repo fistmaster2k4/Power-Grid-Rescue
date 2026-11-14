@@ -12,7 +12,7 @@ This Grid is a starter for Planet Nomads now that the Multiplayer mod is live. T
 
 ## Grid preview
 
-<img width="1152" height="2048" alt="9193fb7b-7a4b-4d56-a4ef-185b282a91df" src="https://github.com/user-attachments/assets/c2684fed-65b9-4bd1-93e1-4004e78406b9" />
+<img width="360" height="640" alt="9193fb7b-7a4b-4d56-a4ef-185b282a91df" src="https://github.com/user-attachments/assets/c2684fed-65b9-4bd1-93e1-4004e78406b9" />
 
 ## Shortcut assignments
 
