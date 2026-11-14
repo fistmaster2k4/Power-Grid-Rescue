@@ -7,8 +7,7 @@ This Grid is a starter for Planet Nomads now that the Multiplayer mod is live. T
 
 ## Download
 
-
-
+**[Download PlanetNomads.rpgp](PlanetNomads.rpgp?raw=true)**
 
 ## Grid preview
 
